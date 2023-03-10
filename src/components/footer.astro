@@ -1,0 +1,55 @@
+---
+import Logoicon from "../icons/logo.icon.astro";
+
+const navs = [
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "About",
+        href: "/#about",
+    },
+    {
+        title: "Blog",
+        href: "/blog",
+    },
+];
+---
+
+<footer class="p-4 bg-white md:p-4 lg:p-4 dark:bg-gray-800">
+    <div class="mx-auto max-w-screen-xl text-center">
+        <a
+            href="/"
+            class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white"
+        >
+            <Logoicon />
+            &nbsp;
+            <span
+                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+                >Moayad Khader</span
+            >
+        </a>
+
+        <p class="my-6 text-gray-500 dark:text-gray-400">
+            Experience is the name everyone gives to their mistakes.
+        </p>
+        <ul
+            class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white"
+        >
+            {
+                navs.map((nav) => (
+                    <li>
+                        <a
+                            href={nav.href}
+                            class="mr-4 hover:underline md:mr-6 "
+                        >
+                            {nav.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+        
+    </div>
+</footer>

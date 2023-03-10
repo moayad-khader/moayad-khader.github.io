@@ -1,89 +1,96 @@
 ---
-
 ---
+
 <style>
     .will-change-transform {
-  will-change: transform;
-}
-.cursor::after {
-  display: block;
-  content: '';
-  position: absolute;
-  width: 4px;
-  height: 100%;
-  background-color: #fff;
-  animation: cursor 0.6s linear infinite alternate;
-  will-change: opacity;
-}
+        will-change: transform;
+    }
+    .cursor::after {
+        display: block;
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 100%;
+        background-color: #fff;
+        animation: cursor 0.6s linear infinite alternate;
+        will-change: opacity;
+    }
 
-@keyframes cursor {
-  0%,
-  40% {
-    opacity: 1;
-  }
+    @keyframes cursor {
+        0%,
+        40% {
+            opacity: 1;
+        }
 
-  60%,
-  100% {
-    opacity: 0;
-  }
-}
-
+        60%,
+        100% {
+            opacity: 0;
+        }
+    }
 </style>
 <script>
-  const sentences = ["Computer Engineer 🛠", "Sofware Developer 👨‍💻", "Tech Wizard 🔮"];
-let sentenceIndex = 0;
-let characterIndex = 0;
+    const sentences = [
+        "Computer Engineer 🛠",
+        "Sofware Developer 👨‍💻",
+        "Tech Wizard 🔮",
+    ];
+    let sentenceIndex = 0;
+    let characterIndex = 0;
 
-function typeWriter() {
-  if (characterIndex < sentences[sentenceIndex].length) {
-    const el:any =  document.getElementById("typewriter");
-    el.innerHTML += sentences[sentenceIndex].charAt(characterIndex);
-    characterIndex++;
-    setTimeout(typeWriter, 50);
-  } else {
-    setTimeout(deleteWriter, 2000);
-  }
-}
-
-function deleteWriter() {
-  if (characterIndex > 0) {
-    const el:any =  document.getElementById("typewriter");
-    el.innerHTML = sentences[sentenceIndex].substring(0, characterIndex - 1);
-    characterIndex--;
-    setTimeout(deleteWriter, 50);
-  } else {
-    sentenceIndex++;
-    if (sentenceIndex >= sentences.length) {
-      sentenceIndex = 0;
+    function typeWriter() {
+        if (characterIndex < sentences[sentenceIndex].length) {
+            const el: any = document.getElementById("typewriter");
+            el.innerHTML += sentences[sentenceIndex].charAt(characterIndex);
+            characterIndex++;
+            setTimeout(typeWriter, 50);
+        } else {
+            setTimeout(deleteWriter, 2000);
+        }
     }
-    setTimeout(typeWriter, 500);
-  }
-}
 
-window.onload = function() {
-  typeWriter();
-}
+    function deleteWriter() {
+        if (characterIndex > 0) {
+            const el: any = document.getElementById("typewriter");
+            el.innerHTML = sentences[sentenceIndex].substring(
+                0,
+                characterIndex - 1
+            );
+            characterIndex--;
+            setTimeout(deleteWriter, 50);
+        } else {
+            sentenceIndex++;
+            if (sentenceIndex >= sentences.length) {
+                sentenceIndex = 0;
+            }
+            setTimeout(typeWriter, 500);
+        }
+    }
 
+    window.onload = function () {
+        typeWriter();
+    };
 </script>
-<section class="bg-white dark:bg-gray-900 ">
-
-    <div class="grid max-w-screen-xl px-4 py-16 mx-auto lg:gap-8 xl:gap-0 lg:py-42 lg:grid-cols-12">
+<section class="bg-white dark:bg-gray-800">
+    <div
+        class="grid max-w-screen-xl px-4 py-16 mx-auto lg:gap-8 xl:gap-0 lg:py-42 lg:grid-cols-12"
+    >
         <div class="mr-auto place-self-center lg:col-span-7">
             <h1 class="mb-2 font-mono text-4xl text-gray-100 md:text-6xl">
-                <div>
-                    Hi, I&apos;m Moayad Khader 👋
+                <div>Hi, I&apos;m Moayad Khader 👋</div>
+            </h1>
+            <div class="relative mb-8">
+                <div
+                    id="typewriter"
+                    class="text-primary-600 text-4xl font-bold h-8"
+                >
                 </div>
-                
-              
-              
-              </h1>
-              <div class="relative mb-8">
-                <div id="typewriter" class="text-primary-600 text-4xl font-bold h-8"></div>
             </div>
-              <div class="text-xl text-white font-semibold md:text-3xl">I code, therefore I am.</div>
+            <div class="text-xl text-white font-semibold md:text-3xl">
+                I code, therefore I am.
+            </div>
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex z-10">
-            <img src="/assets/hero-image-2.png" alt="mockup">
-        </div>                
+            <img src="/assets/hero-image-2.png" alt="mockup" />
+        </div>
     </div>
 </section>
